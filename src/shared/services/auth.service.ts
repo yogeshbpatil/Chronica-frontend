@@ -9,9 +9,23 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+const DEMO_USER: StoredUser = {
+  id: 'demo-user-001',
+  email: 'demo@chronica.app',
+  name: 'Demo User',
+  createdAt: '2026-01-01T00:00:00.000Z',
+  passwordHash: 'demo1234',
+}
+
 function getStoredUsers(): StoredUser[] {
   const raw = localStorage.getItem(STORAGE_KEYS.USERS)
-  return raw ? (JSON.parse(raw) as StoredUser[]) : []
+  const users: StoredUser[] = raw ? (JSON.parse(raw) as StoredUser[]) : []
+  // Seed demo account if not present
+  if (!users.some((u) => u.id === DEMO_USER.id)) {
+    users.push(DEMO_USER)
+    localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users))
+  }
+  return users
 }
 
 function saveStoredUsers(users: StoredUser[]): void {
