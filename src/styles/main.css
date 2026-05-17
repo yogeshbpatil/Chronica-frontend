@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* === BACKGROUNDS === */
+  --color-bg-base: #0E0E12;
+  --color-surface-1: #16161C;
+  --color-surface-2: #1E1E26;
+  --color-surface-3: #26262F;
+
+  /* === BORDERS === */
+  --color-border: #2E2E3C;
+  --color-border-subtle: #222230;
+  --color-border-focus: #C8A84B;
+
+  /* === TEXT === */
+  --color-text-primary: #EDEDF0;
+  --color-text-secondary: #9E9DAA;
+  --color-text-tertiary: #6B6A78;
+  --color-text-disabled: #4A4958;
+
+  /* === ACCENT (Chess Gold) === */
+  --color-accent: #C8A84B;
+  --color-accent-light: #D4BC72;
+  --color-accent-dark: #A88A35;
+  --color-accent-muted: #C8A84B1F;
+
+  /* === SEMANTIC === */
+  --color-success: #4CAF82;
+  --color-success-muted: #4CAF821F;
+  --color-error: #E05B5B;
+  --color-error-muted: #E05B5B1F;
+  --color-warning: #E8A838;
+  --color-warning-muted: #E8A8381F;
+  --color-info: #5B8AE0;
+  --color-info-muted: #5B8AE01F;
+
+  /* === GAME RESULTS === */
+  --color-win: #4CAF82;
+  --color-loss: #E05B5B;
+  --color-draw: #9E9DAA;
+
+  /* === SHADOWS === */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: rgba(200, 168, 75, 0.25);
+    color: var(--color-text-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 2px;
+  }
+}
